@@ -8,7 +8,7 @@
 <h1 align="center">ChatPiXiu</h1>
 <div align="center">
   <a href="https://github.com/catqaq/ChatPiXiu">
-    <img src="https://github.com/catqaq/ChatPiXiu/tree/main/docs/imgs/cat.jpg" alt="Logo" height="210">
+    <img src="https://github.com/catqaq/ChatPiXiu/tree/main/docs/imgs/pixiu.jpg" alt="Logo" height="210">
   </a>
 
   <p align="center">
