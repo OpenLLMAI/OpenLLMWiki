@@ -3,6 +3,7 @@
   <a href="./readme_en.md">English</a>
 </div>
 
+
 </br>
 
 <h1 align="center">ChatPiXiu</h1>
@@ -30,10 +31,11 @@
       <br/>
       <em>开源ChatGPT / 全面 / 轻量 / 易用 </em>
       <br/>
-      <a href="https://zhuanlan.zhihu.com/p/596112080/"><strong>文章解读</strong></a>
+      <a href="https://zhuanlan.zhihu.com/p/622065348/"><strong>文章解读</strong></a>
         ·
-      <a href="https://zhuanlan.zhihu.com/p/617133715?"><strong>视频解读</strong></a>
+      <a href="https://zhuanlan.zhihu.com/p/622065348"><strong>视频解读</strong></a>
     </p>
+
 
 
 
@@ -80,7 +82,7 @@
   - papers解读：doing
   - 炼丹术：done
 - 【P0】OpenSE：句嵌入，自然语言处理的核心问题之一，doing
-- 【P0】[ChatPiXiu](https://github.com/catqaq/ChatPiXiu)：贫穷使人绝望，无卡使人悲伤，doing
+- 【P0】[ChatPiXiu](https://github.com/catqaq/ChatPiXiu)：ChatGPT开源平替及领域适应，doing
 - 【P1】OpenLLMs：大语言模型，doing
 - 【P2】OpenTextTagger：文本标注，分词、NER、词性标注等
 - OpenX：任重而道远
@@ -91,24 +93,65 @@ ChatPiXiu项目为OpenNLP计划的第2个正式的开源项目，旨在Open Chat
 
 ### 1.开发计划
 
-本项目的开发宗旨，打造全面且实用的ChatGPT模型库和文档库。**Eat every ChatGPT - Output your own chatbot!\**
+本项目的开发宗旨，打造全面且实用的ChatGPT模型库和文档库。**Eat every ChatGPT - Output your own chatbot!**
 
-**V1：资料调研+ChatGPT的最小复现+领域LoRA训练**：
+目前我们正在启动V1版本的开发，整体的开发计划如下，主要包括了文档和代码两类任务，数据的部分我们暂时将其分散到了各个子任务中。
 
-1. 资料调研-算力有限，有调查才有训练权：
-   1. 【P0】开源ChatGPT调研：持续更新，doing
-   2. 【P0】训练技术调研：持续更新，doing
-   3. 【P1】部署技术调研：TODO
-2. 【P0】ChatGPT的最小复现：TODO
-3. 【P1】领域LoRA训练：TODO
+**V1版本：资料调研+通用最小实现+领域/任务适配**
 
-**V2[具体视V1的情况而定]：更多模型+更多LoRA**：
+#### 1.1 文档分支
 
-1. 更多模型：支持热门基座模型
-2. 更多LoRA
-3. 压缩实验：知识蒸馏、量化等
+文档分支主要负责项目文档的建设，包括通用技术文档和项目相关文档。
+
+**dev_for_docs**：文档分支，主要负责资料调研（算力有限，有调查才有训练权）：
+
+1. 【P0】开源ChatGPT调研：持续更新，doing
+2. 【P0】训练技术调研：持续更新，doing
+3. 【P0】数据调研：doing
+4. 【P1】部署技术调研：TODO
+5. 【P2】基础模型调研：目前以LLaMA和GLM为主，doing
+6. 【P3】技术解读/教程：doing
 
 
+
+#### 1.2 代码分支
+
+代码分支，负责具体的开发工作，包括数据处理、算法开发、算法评测等，分成通用最小实现和领域/任务适应两种，具体的：
+
+**dev_for_chatmini**：通用最小实现分支，尽可能支持不同的基础模型和训练方式，提供可比较的实现。
+
+1. 【P0】ChatGPT最小复现：完整的RLHF复现SFT-RM-PPO，doing
+2. 【P0】适配不同的基座模型
+3. 适配不同的PEFT算法
+4. 【P2】探索新的训练方式
+5. 【P3】探索知识迁移：比如蒸馏
+
+
+
+**dev_for_chatzhihu**：知乎及问答领域适配，主要想解决一些知乎使用过程中的痛点，比如问题冗余、回答太多等等。
+
+1. 【P0】收集知乎数据收集及处理
+   1. SFT数据
+   2. RLHF数据：答案打分
+   3. 摘要数据：答案/观点汇总、摘要
+2. 【P0】基于知乎数据做SFT
+3. 【P1】基于知乎数据做RLHF
+4. 【P2】输出知乎LoRA
+5. 【P3】和知乎热榜聊天的demo
+
+
+
+**dev_for_chatzhangsan**：法律领域适配，张三犯了什么罪？
+
+1. 【P0】法律领域数据收集及处理
+2. 法律条文解释
+3. 【P1】罪名判定：张三犯了什么罪？
+
+
+
+更多领域，敬请期待！
+
+ChatPiXiu-Eat every ChatGPT - Output your own chatbot!
 
 ### 2.加入我们
 
@@ -130,35 +173,35 @@ OpenNLP计划的其他内容尚在筹备中，暂时只开源了本项目和[Ope
 | [ChatLLaMA](https://github.com/nebuly-ai/nebullvm/tree/main/apps/accelerate/chatllama) | LLaMA          | Nebuly+AI                                         | \-                                                           | [license](https://github.com/nebuly-ai/nebullvm/blob/main/apps/accelerate/chatllama/LICENSE) | 数据集创建、使用 RLHF 进行高效训练以及推理优化。             |                                                              |
 | [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca) | LLaMA          | [ymcui](https://github.com/ymcui)                 | \-                                                           | [Apache-2.0 license](https://github.com/ymcui/Chinese-LLaMA-Alpaca/blob/main/LICENSE.md) | 中文LLaMA&Alpaca大语言模型+本地CPU/GPU部署 (Chinese LLaMA & Alpaca LLMs) |                                                              |
 | [alpaca-lora](https://github.com/tloen/alpaca-lora)          | LLaMA          | stanford                                          | [LLaMA-GPT4 dataset](https://github.com/Instruction-Tuning-with-GPT-4/GPT-4-LLM) | [Apache-2.0 license](https://github.com/tloen/alpaca-lora/blob/main/LICENSE) | [LoRA](https://zhuanlan.zhihu.com/p/620327907)               |                                                              |
-| Chinese-alpaca-lora<br>Luotuo-Chinese-LLM                    | LLaMA          | \-                                                |                                                              |                                                              | LoRA                                                         |                                                              |
+| [Chinese-alpaca-lora<br/>](https://github.com/LC1332/Chinese-alpaca-lora)[Luotuo-Chinese-LLM](https://github.com/LC1332/Luotuo-Chinese-LLM) | LLaMA          | [LC1332](https://github.com/LC1332)               | -                                                            | [Apache-2.0 license](https://github.com/LC1332/Luotuo-Chinese-LLM/blob/main/LICENSE) | LoRA                                                         |                                                              |
 | [ChatGLM](https://github.com/THUDM/ChatGLM-6B)               | GLM            | 清华                                              | 1T 标识符的中英双语数据                                      | [Apache-2.0 license](https://github.com/THUDM/ChatGLM-6B/blob/main/LICENSE) | 监督微调、反馈自助、人类反馈强化学习                         | [PROJECT.md](https://github.com/THUDM/ChatGLM-6B/blob/main/PROJECT.md) |
 | [FastChat](https://github.com/lm-sys/FastChat)<br><br>Vicuna | LLaMA          | 斯坦福、CMU、UC伯克利                             | ShareGPT                                                     | [Apache-2.0 license](https://github.com/lm-sys/FastChat/blob/main/LICENSE) | SFT，使用GPT-4作为评判标准，结果显示Vicuna-13B在超过90%的情况下实现了与ChatGPT和Bard相匹敌的能力。 |                                                              |
-| Chinese-Vicuna                                               | LLaMA          | \-                                                | \-                                                           | [Apache-2.0 license](https://github.com/Facico/Chinese-Vicuna/blob/master/LICENSE) | LoRA                                                         |                                                              |
+| [Chinese-Vicuna](https://github.com/Facico/Chinese-Vicuna)   | LLaMA          | \-                                                | \-                                                           | [Apache-2.0 license](https://github.com/Facico/Chinese-Vicuna/blob/master/LICENSE) | LoRA                                                         |                                                              |
 | [EasyLM](https://github.com/young-geng/EasyLM)<br>Koala考拉  | LLaMA<br>multi | UC伯克利                                          | ChatGPT数据和开源数据（Open Instruction Generalist (OIG)、斯坦福 Alpaca 模型使用的数据集、Anthropic HH、OpenAI WebGPT、OpenAI Summarization） | [Apache-2.0 license](https://github.com/Facico/Chinese-Vicuna/blob/master/LICENSE) | SFT                                                          |                                                              |
 | [ColossalChat](https://github.com/hpcaitech/ColossalAI/tree/main/applications/Chat) | LLaMA          | ColossalAI                                        | [](https://github.com/XueFuzhao/InstructionWild)[InstructionWild](https://github.com/XueFuzhao/InstructionWild):104K bilingual datasets | [LICENSE](https://github.com/hpcaitech/ColossalAI/blob/main/applications/Chat/LICENSE) | SFT-RM-RLHF                                                  |                                                              |
 | [ChatRWKV](https://github.com/BlinkDL/ChatRWKV)              | RWKV           | [BlinkDL](https://github.com/BlinkDL)             | \-                                                           | [Apache-2.0 license](https://github.com/BlinkDL/ChatRWKV/blob/main/LICENSE) | ChatRWKV is like ChatGPT but powered by RWKV (100% RNN) language model, and open source. |                                                              |
 | [ChatYuan](https://github.com/clue-ai/ChatYuan)              | T5             | 元语智能                                          | PromptClue                                                   | [LICENSE](https://github.com/clue-ai/ChatYuan/blob/main/LICENSE) | 基于PromptClue进行了监督微调                                 |                                                              |
 | [OpenChatKit](https://github.com/togethercomputer/OpenChatKit) | GPT-NoX-20B    | Together+LAION+Ontocord.ai                        | OIG-43M                                                      | [Apache-2.0 license](https://github.com/togethercomputer/OpenChatKit/blob/main/LICENSE) | 60亿参数的审核模型，对不合适或者是有害的信息进行过滤         |                                                              |
-| BELLE                                                        | Bloom<br>LLama | [LianjiaTech](https://github.com/LianjiaTech)     | 10M-ChatGPT生成的数据                                        | [Apache-2.0 license](https://github.com/LianjiaTech/BELLE/blob/main/LICENSE) | SFT                                                          |                                                              |
-| PaLM-rlhf-pytorch                                            | PaLM           | [lucidrains](https://github.com/lucidrains)       | \-                                                           | [MIT license](https://github.com/lucidrains/PaLM-rlhf-pytorch/blob/main/LICENSE) | RLHF                                                         | PaLM太大了                                                   |
+| [BELLE](https://github.com/LianjiaTech/BELLE)                | Bloom<br>LLama | [LianjiaTech](https://github.com/LianjiaTech)     | 10M-ChatGPT生成的数据                                        | [Apache-2.0 license](https://github.com/LianjiaTech/BELLE/blob/main/LICENSE) | SFT                                                          |                                                              |
+| [PaLM-rlhf-pytorch](https://github.com/lucidrains/PaLM-rlhf-pytorch) | PaLM           | [lucidrains](https://github.com/lucidrains)       | \-                                                           | [MIT license](https://github.com/lucidrains/PaLM-rlhf-pytorch/blob/main/LICENSE) | RLHF                                                         | PaLM太大了                                                   |
 | [dolly](https://github.com/databrickslabs/dolly)             | GPT-J-6B       | \-                                                | \-                                                           | \-                                                           | 参考Alpaca                                                   |                                                              |
-| LMFlow                                                       | LLaMA          | [OptimalScale](https://github.com/OptimalScale)   |                                                              |                                                              | An Extensible Toolkit for Finetuning and Inference of Large Foundation Models. Large Model for All.<br>LLaMA-7B，一张3090耗时 5 个小时 |                                                              |
+| [LMFlow](https://github.com/OptimalScale/LMFlow)             | LLaMA          | [OptimalScale](https://github.com/OptimalScale)   |                                                              |                                                              | An Extensible Toolkit for Finetuning and Inference of Large Foundation Models. Large Model for All.<br>LLaMA-7B，一张3090耗时 5 个小时 |                                                              |
 | GPTrillion                                                   | \-             | \-                                                | \-                                                           | \-                                                           | 1.5万亿，多模态                                              |                                                              |
 | [open_flamingo](https://github.com/mlfoundations/open_flamingo) | LLaMA<br>CLIP  | LAION                                             | [Multimodal C4](https://github.com/allenai/mmc4)             | [MIT license](https://github.com/mlfoundations/open_flamingo/blob/main/LICENSE) |                                                              |                                                              |
 | [baize-chatbot](https://github.com/project-baize/baize-chatbot) | LLaMA          | [project-baize](https://github.com/project-baize) | 100k dialogs generated by letting ChatGPT chat with itself.  | [GPL-3.0 license](https://github.com/project-baize/baize-chatbot/blob/main/LICENSE) | LoRA                                                         |                                                              |
 | [ChatPiXiu](https://github.com/catqaq/ChatPiXiu)             | multi          | 羡鱼智能                                          | \-                                                           | \-                                                           | LoRA                                                         | 筹备阶段                                                     |
 | [stackllama](https://huggingface.co/blog/stackllama)         | LLaMA          | Hugging Face                                      | \-                                                           | \-                                                           | 用RLHF训练LLaMA的实践指南                                    |                                                              |
-| Lit-LLaMA                                                    | LLaMA          | lightening-ai                                     | \-                                                           | \-                                                           | 重写重训LLaMA,绕开license                                    | 概念阶段                                                     |
+| [lit-llama](https://github.com/Lightning-AI/lit-llama)       | LLaMA          | lightening-ai                                     | \-                                                           | [Apache-2.0 license](https://github.com/Lightning-AI/lit-llama/blob/main/LICENSE) | **重写重训LLaMA,绕开license**                                | 概念阶段                                                     |
 | [OPT](https://arxiv.org/abs/2205.01068)                      | OPT            | meta                                              | \-                                                           | [MIT license](https://github.com/facebookresearch/metaseq/blob/main/LICENSE) | 当年对标GPT3的模型                                           |                                                              |
 
 ### 2.基础模型
 
-| model | 架构 | 机构 | 数据 | license | 介绍 | 备注 |
-| ----- | ---- | ---- | ---- | ------- | ---- | ---- |
-| LLaMA |      |      |      |         |      |      |
-| GLM   |      |      |      |         |      |      |
-| GPT   |      |      |      |         |      |      |
-| OPT   |      |      |      |         |      |      |
+| model | 架构 | 机构 | 数据 | license                                                      | 介绍                                                         | 备注 |
+| ----- | ---- | ---- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
+| LLaMA |      |      |      | [ GPL-3.0 license](https://github.com/facebookresearch/llama/blob/main/LICENSE) | [当前开源ChatGPT复现中使用最多的基础模型](https://zhuanlan.zhihu.com/p/622190021) |      |
+| GLM   |      |      |      | [ Apache-2.0 license](https://github.com/THUDM/ChatGLM-6B/blob/main/LICENSE) | [GLM](https://zhuanlan.zhihu.com/p/622254367),中英双语，可能是当前开源的中文效果最好的基础模型； |      |
+| GPT   |      |      |      |                                                              |                                                              |      |
+| OPT   |      |      |      |                                                              |                                                              |      |
 
 ### 3.数据
 
@@ -181,7 +224,7 @@ OpenNLP计划的其他内容尚在筹备中，暂时只开源了本项目和[Ope
 | [RLHF](https://github.com/sunzeyeah/RLHF)                    | RL      | [sunzeyeah](https://github.com/sunzeyeah) | 基于transformers库实现       | \-                                                           | Implementation of Chinese ChatGPT.<br>SFT、Reward Model和RLHF |      |
 | trlx                                                         | RL      | [CarperAI](https://github.com/CarperAI)   | 强大的transformer 强化学习库 | [MIT license](https://github.com/CarperAI/trlx/blob/main/LICENSE) | A repo for distributed training of language models with Reinforcement Learning via Human Feedback (RLHF)<br>不支持自定义预训练模型。 |      |
 | [trl](https://github.com/lvwerra/trl)                        | RL      | Hugging Face                              | 基于transformers             | [Apache-2.0 license](https://github.com/lvwerra/trl/blob/main/LICENSE) | 只要是基于ransformers 库开发的预训练库，均可适配，强烈推荐   |      |
-| [DeepSpeed-Chat](https://github.com/microsoft/DeepSpeedExamples/tree/master/applications/DeepSpeed-Chat) | general | [microsoft](https://github.com/microsoft) | 基于DeepSpeed                | [Apache-2.0 license](https://github.com/microsoft/DeepSpeedExamples/blob/master/LICENSE) | 训练速度大幅提升                                             |      |
+| [DeepSpeed-Chat](https://github.com/microsoft/DeepSpeedExamples/tree/master/applications/DeepSpeed-Chat) | general | [microsoft](https://github.com/microsoft) | 基于DeepSpeed                | [Apache-2.0 license](https://github.com/microsoft/DeepSpeedExamples/blob/master/LICENSE) | **训练速度**大幅提升                                         |      |
 
 #### 4.2 部署
 
