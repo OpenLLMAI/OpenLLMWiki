@@ -10,7 +10,7 @@
 <h1 align="center">ChatPiXiu</h1>
 <div align="center">
   <a href="https://github.com/catqaq/ChatPiXiu">
-    <img src="./docs/imgs/pixiu.jpg" alt="Logo" height="210">
+    <img src="./docs/imgs/pixiu.png" alt="Logo" height="210">
   </a>
 
 
